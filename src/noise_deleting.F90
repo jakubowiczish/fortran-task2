@@ -24,7 +24,7 @@ program main
 
     do i = 1, n
         call random_number(random_noise)
-        noised_data_in(i) = cos(4 * pi * t * 10) + (random_noise  - 1) * 0.25
+        garbled_data_in(i) = cos(4 * pi * t * 10) + (random_noise  - 1) * 0.25
         t = t + dt
     end do
 
@@ -61,12 +61,33 @@ program main
     open(19, file='../res/garbled_cosinus_filtered', status='unknown')
 
     do i = 1, size(garbled_data_out)
-        if(abs(garbled_data_out(i)) < 50)
+        if(abs(garbled_data_out(i)) < 50) then
             garbled_data_out(i) = (0.0, 0.0)
-        
+        end if
         write(19, '(I15, F15.10)') i, abs(garbled_data_out(i))
     end do
 
     close(19)
-    
+
+
+    call fftw_execute_dft_c2r(plan_garbled_backward, garbled_data_out, garbled_data_in)
+
+
+    t = 0.0
+
+    open(19, file='../res/filtered_cosinus', status='unknown')
+
+    do i = 1, size(garbled_data_in)
+        write(19, '(I15, F15.10)') i, garbled_data_in(i) / size(garbled_data_in)
+        t = t + dt
+    end do
+
+    close(19)
+
+
+    call fftw_destroy_plan(plan_garbled_forward)
+    call fftw_destroy_plan(plan_garbled_backward)
+
+    deallocate(garbled_data_in)
+    deallocate(garbled_data_out)
 end program main
