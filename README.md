@@ -63,7 +63,8 @@ Final part of the task was to perform Inverse Fourier Transform on the part that
 Following image presents results of this operation:
 ![alt_text](https://raw.githubusercontent.com/jakubowiczish/fortran-task2/master/res/filtered_cosinus.png)
 
-#### All foregoing plots are available in ```res```, both png and pdf files, 
+#### All foregoing plots are available in ```res```, both png and pdf files.
+#### All commands that are used in order to create plots using gnuplot are also available in ```res``` directory. 
 
 
 
