@@ -1,13 +1,13 @@
 IFORT=ifort -std08 -O3
-SRC=main.F90
-OUT=fft
+SRC_SUM=signals_sum.F90
+OUT_SUM=signals_sum
 LIB=lfftw3
 
-build: main.F90
-	$(IFORT) $(SRC) -o $(OUT) -$(LIB)
+build: $(SRC_SUM)
+	$(IFORT) $(SRC_SUM) -o $(OUT_SUM) -$(LIB)
 
-run: main.F90
-	./$(OUT)
+run_sum: $(SRC_SUM)
+	./$(OUT_SUM)
 
-clean: $(OUT)
-	rm -f $(OUT)
+clean: $(OUT_SUM)
+	rm -f $(OUT_SUM)

@@ -9,7 +9,7 @@ program main
     real(c_double), allocatable :: regular_data_in(:)
     complex(c_double_complex), allocatable :: regular_data_out(:)
 
-    type(c_ptr) :: plan_forward, plan_noised_forward, plan_noise_backward
+    type(c_ptr) :: plan_forward
 
     real(16) :: t = 0.0
     real(16) :: dt = 1 / real(n - 1)
@@ -30,7 +30,8 @@ program main
 
     call fftw_execute_dft_r2c(plan_forward, regular_data_in, regular_data_out)
 
-    open(19, file='../res/fft_out_file', status='unknown')
+
+    open(19, file='../res/signals_sum_out_file', status='unknown')
 
     do i = 1, size(regular_data_out)
         write(19, '(I15, F15.10)') i, abs(regular_data_out(i))
@@ -43,6 +44,4 @@ program main
 
     deallocate(regular_data_in)
     deallocate(regular_data_out)
-
- 
  end program main

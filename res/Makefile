@@ -1,2 +1,2 @@
 clean:
-	rm -f fft_out_file
+	rm -f signals_sum_plot.pdf
