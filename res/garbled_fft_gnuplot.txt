@@ -1,6 +1,6 @@
 unset grid
 set terminal pdf
-set output "signals_sum_plot.pdf"
+set output "garbled_fft.pdf"
 set key box top left
 set multi
 set key opaque
@@ -13,5 +13,5 @@ set ylabel "Amplitude" font "Arial, 14"
 set xtics font "Arial, 14"
 set ytics font "Arial, 14"
 set termoption dashed
-plot  'signals_sum'
+plot  'garbled_fft'
 unset multi

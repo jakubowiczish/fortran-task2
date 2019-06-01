@@ -24,7 +24,7 @@ program main
 
     do i = 1, n
         call random_number(random_noise)
-        garbled_data_in(i) = cos(4 * pi * t * 10) + (random_noise  - 1) * 0.25
+        garbled_data_in(i) = cos(2 * pi * t * 4) + (random_noise  - 1) * 0.1
         t = t + dt
     end do
 
@@ -37,7 +37,7 @@ program main
     open(19, file='../res/garbled_cosinus', status='unknown')
 
     do i = 1, size(garbled_data_in)
-        write(19, '(F15.10, F15.10)') i, abs(garbled_data_in(i))
+        write(19, '(F15.10, F15.10)') t, garbled_data_in(i)
         t = t + dt
     end do
 
@@ -47,7 +47,7 @@ program main
     call fftw_execute_dft_r2c(plan_garbled_forward, garbled_data_in, garbled_data_out)
 
 
-    open(19, file='../res/fft_garbled_cosinus', status='unknown')
+    open(19, file='../res/garbled_fft', status='unknown')
 
     do i = 1, size(garbled_data_out)
         write(19, '(I15, F15.10)') i, abs(garbled_data_out(i))
@@ -58,7 +58,7 @@ program main
 
 
 
-    open(19, file='../res/garbled_cosinus_filtered', status='unknown')
+    open(19, file='../res/filtered_fft', status='unknown')
 
     do i = 1, size(garbled_data_out)
         if(abs(garbled_data_out(i)) < 50) then

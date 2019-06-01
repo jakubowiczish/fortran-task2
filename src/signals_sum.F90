@@ -31,7 +31,7 @@ program main
     call fftw_execute_dft_r2c(plan_forward, regular_data_in, regular_data_out)
 
 
-    open(19, file='../res/signals_sum_out_file', status='unknown')
+    open(19, file='../res/signals_sum', status='unknown')
 
     do i = 1, size(regular_data_out)
         write(19, '(I15, F15.10)') i, abs(regular_data_out(i))
