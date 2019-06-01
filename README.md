@@ -5,7 +5,11 @@ There are 2 source files, they are both in ```src``` folder:
 - ```signals_sum.F90``` - file responsible for changing given function into the sum of signals
 - ```noise_deleting.F90``` - file responsible for second part of the task
 
-There is also a Makefile in ```src``` folder
+There is also a Makefile in ```src``` folder, which contains following commands:
+```build```
+```run_sum```
+```run_filter```
+```clean```
 
 ### Running instruction
 In order to run the project, you need to have Intel Fortran Compiler (ifort) installed.
@@ -64,10 +68,4 @@ Following image presents results of this operation:
 ![alt_text](https://raw.githubusercontent.com/jakubowiczish/fortran-task2/master/res/filtered_cosinus.png)
 
 #### All foregoing plots are available in ```res```, both png and pdf files.
-#### All commands that are used in order to create plots using gnuplot are also available in ```res``` directory. 
-
-
-
-
-
-
+#### All commands that I used in order to create plots using gnuplot are also available in ```res``` directory. 
